@@ -1,0 +1,1687 @@
+swagger: '2.0'
+info:
+  description: "Natura 2000 es una red ecológica europea de áreas de conservación de la biodiversidad. Consta de Zonas Especiales de Conservación (ZEC) establecidas de acuerdo con la Directiva Hábitat y de Zonas de Especial Protección para las Aves (ZEPA) designadas en virtud de la Directiva Aves. Su finalidad es asegurar la supervivencia a largo plazo de las especies y los tipos de hábitat en Europa, contribuyendo a detener la pérdida de biodiversidad. Es el principal instrumento para la conservación de la naturaleza en la Unión Europea. https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering"
+  title: Servicio Web de la Red Natura 2000
+  version: 12.2.3
+host: des.iepnb.es:443
+basePath: /api/rn2000/
+schemes:
+  - https
+consumes:
+  - application/json
+  - application/vnd.pgrst.object+json;nulls=stripped
+  - application/vnd.pgrst.object+json
+  - text/csv
+produces:
+  - application/json
+  - application/vnd.pgrst.object+json;nulls=stripped
+  - application/vnd.pgrst.object+json
+  - text/csv
+paths:
+  /:
+    get:
+      produces:
+        - application/openapi+json
+        - application/json
+      responses:
+        '200':
+          description: OK
+      summary: Devuelve el documento completo de especificación OpenAPI
+      tags:
+        - Esquema Open API
+  /v_cntr_other_species:
+    get:
+      parameters:
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_group'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_name'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_sensitive'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_np'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_size_min'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_size_max'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_unit'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_category'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_motivation'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.site_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.year'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.id_reporte'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_type'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_id_type'
+        - $ref: '#/parameters/rowFilter.v_cntr_other_species.other_species_id_unit'
+        - $ref: '#/parameters/select'
+        - $ref: '#/parameters/order'
+        - $ref: '#/parameters/range'
+        - $ref: '#/parameters/rangeUnit'
+        - $ref: '#/parameters/offset'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/preferCount'
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/v_cntr_other_species'
+            type: array
+        '206':
+          description: Partial Content
+      tags:
+        - Cntr Other Species
+  /v_cntr_habitat:
+    get:
+      parameters:
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_priority'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_np'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_cover'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_caves'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_data_quality'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_representativity'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_relative_surface'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_conservation'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_global'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.site_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.habitat_cover_ha'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.year'
+        - $ref: '#/parameters/rowFilter.v_cntr_habitat.id_reporte'
+        - $ref: '#/parameters/select'
+        - $ref: '#/parameters/order'
+        - $ref: '#/parameters/range'
+        - $ref: '#/parameters/rangeUnit'
+        - $ref: '#/parameters/offset'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/preferCount'
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/v_cntr_habitat'
+            type: array
+        '206':
+          description: Partial Content
+      tags:
+        - Cntr Habitat
+  /v_cntr_site:
+    get:
+      parameters:
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_type'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_name'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_spa_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_spa_legal_ref'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_sci_prop_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_sci_conf_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_sac_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_sac_legal_ref'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_explanations'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_longitude'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_latitude'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_area'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_marine_area'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_length'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_characteristics'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_quality'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_designation'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.doc_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.resp_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.mgmt_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.map_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.date_creation'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.date_deletion'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.date_update'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_asci_prop_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_asci_conf_cand_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_asci_conf_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_asci_desig_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_asci_legal_ref'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.year'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_comp_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.site_update_date'
+        - $ref: '#/parameters/rowFilter.v_cntr_site.id_reporte'
+        - $ref: '#/parameters/select'
+        - $ref: '#/parameters/order'
+        - $ref: '#/parameters/range'
+        - $ref: '#/parameters/rangeUnit'
+        - $ref: '#/parameters/offset'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/preferCount'
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/v_cntr_site'
+            type: array
+        '206':
+          description: Partial Content
+      tags:
+        - Cntr Site
+  /v_cntr_planes:
+    get:
+      parameters:
+        - $ref: '#/parameters/rowFilter.v_cntr_planes.site_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_planes.site_name'
+        - $ref: '#/parameters/rowFilter.v_cntr_planes.mgmt_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_planes.mgmt_plan_name'
+        - $ref: '#/parameters/rowFilter.v_cntr_planes.mgmt_plan_url'
+        - $ref: '#/parameters/select'
+        - $ref: '#/parameters/order'
+        - $ref: '#/parameters/range'
+        - $ref: '#/parameters/rangeUnit'
+        - $ref: '#/parameters/offset'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/preferCount'
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/v_cntr_planes'
+            type: array
+        '206':
+          description: Partial Content
+      tags:
+        - Cntr Planes
+  /v_cntr_species:
+    get:
+      parameters:
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_id'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_group'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_name'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_sensitive'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_np'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_type'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_size_min'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_size_max'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_unit'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_category'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_data_quality'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_population'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_conservation'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_isolation'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_global'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.site_code'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.year'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.id_reporte'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_id_type'
+        - $ref: '#/parameters/rowFilter.v_cntr_species.species_id_unit'
+        - $ref: '#/parameters/select'
+        - $ref: '#/parameters/order'
+        - $ref: '#/parameters/range'
+        - $ref: '#/parameters/rangeUnit'
+        - $ref: '#/parameters/offset'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/preferCount'
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/v_cntr_species'
+            type: array
+        '206':
+          description: Partial Content
+      tags:
+        - Cntr Species
+  /rpc/obtenerespeciesporsitio:
+    get:
+      description: "\r\n  Servicio para la obtención de las especies con presencia en un sitio Red Natura 2000. \r\n  En parámetro en envia el identificador de sitio Red Natura 2000. El servicio devuelve un listado de especies."
+      parameters:
+        - format: character varying
+          in: query
+          name: _idsitiorn2000
+          required: true
+          type: string
+      produces:
+        - application/json
+        - application/vnd.pgrst.object+json;nulls=stripped
+        - application/vnd.pgrst.object+json
+      responses:
+        '200':
+          description: OK
+      summary: "Obtener especies por sitio RN2000\r"
+      tags:
+        - (rpc) Obtener Especies Por Sitio
+    post:
+      description: "\r\n  Servicio para la obtención de las especies con presencia en un sitio Red Natura 2000. \r\n  En parámetro en envia el identificador de sitio Red Natura 2000. El servicio devuelve un listado de especies."
+      parameters:
+        - in: body
+          name: args
+          required: true
+          schema:
+            description: "Obtener especies por sitio RN2000\r\n\r\n  Servicio para la obtención de las especies con presencia en un sitio Red Natura 2000. \r\n  En parámetro en envia el identificador de sitio Red Natura 2000. El servicio devuelve un listado de especies."
+            properties:
+              _idsitiorn2000:
+                format: character varying
+                type: string
+            required:
+              - _idsitiorn2000
+            type: object
+        - $ref: '#/parameters/preferParams'
+      produces:
+        - application/json
+        - application/vnd.pgrst.object+json;nulls=stripped
+        - application/vnd.pgrst.object+json
+      responses:
+        '200':
+          description: OK
+      summary: "Obtener especies por sitio RN2000\r"
+      tags:
+        - (rpc) Obtener Especies Por Sitio
+  /rpc/obtenerhabitatsporsitio:
+    get:
+      parameters:
+        - format: character varying
+          in: query
+          name: _idsitiorn2000
+          required: true
+          type: string
+      produces:
+        - application/json
+        - application/vnd.pgrst.object+json;nulls=stripped
+        - application/vnd.pgrst.object+json
+      responses:
+        '200':
+          description: OK
+      summary: >-
+        Servicio para la obtención de los habitats con presencia en un sitio Red
+        Natura 2000. En parámetro en envia el identificador de sitio Red Natura
+        2000. El servicio devuelve un listado de habitats.
+      tags:
+        - (rpc) Obtener Habitats Por Sitio
+    post:
+      parameters:
+        - in: body
+          name: args
+          required: true
+          schema:
+            description: >-
+              Servicio para la obtención de los habitats con presencia en un
+              sitio Red Natura 2000. En parámetro en envia el identificador de
+              sitio Red Natura 2000. El servicio devuelve un listado de
+              habitats.
+            properties:
+              _idsitiorn2000:
+                format: character varying
+                type: string
+            required:
+              - _idsitiorn2000
+            type: object
+        - $ref: '#/parameters/preferParams'
+      produces:
+        - application/json
+        - application/vnd.pgrst.object+json;nulls=stripped
+        - application/vnd.pgrst.object+json
+      responses:
+        '200':
+          description: OK
+      summary: >-
+        Servicio para la obtención de los habitats con presencia en un sitio Red
+        Natura 2000. En parámetro en envia el identificador de sitio Red Natura
+        2000. El servicio devuelve un listado de habitats.
+      tags:
+        - (rpc) Obtener Habitats Por Sitio
+definitions:
+  v_cntr_other_species:
+    properties:
+      other_species_id:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: numeric
+        type: number
+      other_species_group:
+        format: character varying
+        maxLength: 20
+        type: string
+      other_species_code:
+        format: character varying
+        type: string
+      other_species_name:
+        format: character varying
+        maxLength: 250
+        type: string
+      other_species_sensitive:
+        format: numeric
+        type: number
+      other_species_np:
+        format: numeric
+        type: number
+      other_species_size_min:
+        format: numeric
+        type: number
+      other_species_size_max:
+        format: numeric
+        type: number
+      other_species_unit:
+        format: character varying
+        maxLength: 100
+        type: string
+      other_species_category:
+        format: character varying
+        maxLength: 4
+        type: string
+      other_species_motivation:
+        format: character varying
+        maxLength: 50
+        type: string
+      site_code:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: character varying
+        maxLength: 12
+        type: string
+      year:
+        format: integer
+        type: integer
+      id_reporte:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: integer
+        type: integer
+      other_species_type:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: character varying
+        maxLength: 50
+        type: string
+      other_species_id_type:
+        format: numeric
+        type: number
+      other_species_id_unit:
+        format: numeric
+        type: number
+    type: object
+  v_cntr_habitat:
+    properties:
+      habitat_id:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: numeric
+        type: number
+      habitat_code:
+        format: character varying
+        maxLength: 4
+        type: string
+      habitat_priority:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: numeric
+        type: number
+      habitat_np:
+        format: numeric
+        type: number
+      habitat_cover:
+        format: numeric
+        type: number
+      habitat_caves:
+        format: numeric
+        type: number
+      habitat_data_quality:
+        format: character varying
+        maxLength: 2
+        type: string
+      habitat_representativity:
+        format: character varying
+        maxLength: 1
+        type: string
+      habitat_relative_surface:
+        format: character varying
+        maxLength: 1
+        type: string
+      habitat_conservation:
+        format: character varying
+        maxLength: 1
+        type: string
+      habitat_global:
+        format: character varying
+        maxLength: 1
+        type: string
+      site_code:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: character varying
+        maxLength: 12
+        type: string
+      habitat_cover_ha:
+        format: numeric
+        type: number
+      year:
+        format: integer
+        type: integer
+      id_reporte:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: integer
+        type: integer
+    type: object
+  v_cntr_site:
+    properties:
+      site_code:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: character varying
+        maxLength: 12
+        type: string
+      site_type:
+        format: character varying
+        maxLength: 1
+        type: string
+      site_name:
+        format: text
+        type: string
+      site_spa_date:
+        format: date
+        type: string
+      site_spa_legal_ref:
+        format: text
+        type: string
+      site_sci_prop_date:
+        format: date
+        type: string
+      site_sci_conf_date:
+        format: date
+        type: string
+      site_sac_date:
+        format: date
+        type: string
+      site_sac_legal_ref:
+        format: text
+        type: string
+      site_explanations:
+        format: text
+        type: string
+      site_longitude:
+        format: numeric
+        type: number
+      site_latitude:
+        format: numeric
+        type: number
+      site_area:
+        format: numeric
+        type: number
+      site_marine_area:
+        format: numeric
+        type: number
+      site_length:
+        format: numeric
+        type: number
+      site_characteristics:
+        format: text
+        type: string
+      site_quality:
+        format: text
+        type: string
+      site_designation:
+        format: text
+        type: string
+      doc_id:
+        format: numeric
+        type: number
+      resp_id:
+        format: integer
+        type: integer
+      mgmt_id:
+        format: numeric
+        type: number
+      map_id:
+        format: numeric
+        type: number
+      date_creation:
+        format: date
+        type: string
+      date_deletion:
+        format: date
+        type: string
+      date_update:
+        format: date
+        type: string
+      site_asci_prop_date:
+        format: date
+        type: string
+      site_asci_conf_cand_date:
+        format: date
+        type: string
+      site_asci_conf_date:
+        format: date
+        type: string
+      site_asci_desig_date:
+        format: date
+        type: string
+      site_asci_legal_ref:
+        format: text
+        type: string
+      year:
+        format: integer
+        type: integer
+      site_comp_date:
+        format: date
+        type: string
+      site_update_date:
+        format: date
+        type: string
+      id_reporte:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: integer
+        type: integer
+    type: object
+  v_cntr_planes:
+    properties:
+      site_code:
+        format: character varying
+        maxLength: 12
+        type: string
+      site_name:
+        format: text
+        type: string
+      mgmt_id:
+        format: numeric
+        type: number
+      mgmt_plan_name:
+        format: text
+        type: string
+      mgmt_plan_url:
+        format: text
+        type: string
+    type: object
+  v_cntr_species:
+    properties:
+      species_id:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: numeric
+        type: number
+      species_group:
+        format: character varying
+        maxLength: 20
+        type: string
+      species_code:
+        format: character varying
+        type: string
+      species_name:
+        format: character varying
+        maxLength: 250
+        type: string
+      species_sensitive:
+        format: numeric
+        type: number
+      species_np:
+        format: numeric
+        type: number
+      species_type:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: character varying
+        maxLength: 50
+        type: string
+      species_size_min:
+        format: numeric
+        type: number
+      species_size_max:
+        format: numeric
+        type: number
+      species_unit:
+        format: character varying
+        maxLength: 100
+        type: string
+      species_category:
+        format: character varying
+        maxLength: 4
+        type: string
+      species_data_quality:
+        format: character varying
+        maxLength: 2
+        type: string
+      species_population:
+        format: character varying
+        maxLength: 4
+        type: string
+      species_conservation:
+        format: character varying
+        maxLength: 2
+        type: string
+      species_isolation:
+        format: character varying
+        maxLength: 4
+        type: string
+      species_global:
+        format: character varying
+        type: string
+      site_code:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: character varying
+        maxLength: 12
+        type: string
+      year:
+        format: integer
+        type: integer
+      id_reporte:
+        description: |-
+          Note:
+          This is a Primary Key.<pk/>
+        format: integer
+        type: integer
+      species_id_type:
+        format: numeric
+        type: number
+      species_id_unit:
+        format: numeric
+        type: number
+    type: object
+parameters:
+  preferParams:
+    name: Prefer
+    description: Preference
+    required: false
+    enum:
+      - params=single-object
+    in: header
+    type: string
+  preferReturn:
+    name: Prefer
+    description: Preference
+    required: false
+    enum:
+      - return=representation
+      - return=minimal
+      - return=none
+    in: header
+    type: string
+  preferCount:
+    name: Prefer
+    description: Preference
+    required: false
+    enum:
+      - count=none
+    in: header
+    type: string
+  preferPost:
+    name: Prefer
+    description: Preference
+    required: false
+    enum:
+      - return=representation
+      - return=minimal
+      - return=none
+      - resolution=ignore-duplicates
+      - resolution=merge-duplicates
+    in: header
+    type: string
+  select:
+    name: select
+    description: Filtering Columns. Filtering Columns. Lista separada por comas de los nombres de los campos que se desean incluir en la respuesta. Permite limitar las columnas devueltas por el API para optimizar la consulta. (ej. 
+    required: false
+    in: query
+    type: string
+  on_conflict:
+    name: on_conflict
+    description: On Conflict
+    required: false
+    in: query
+    type: string
+  order:
+    name: order
+    description: "Ordering. Ordering. Define el orden en que se devuelven los resultados. (ej.: order=nombre.asc ordena por el campo nombre en orden ascendente. También puedes usar .desc para descendente: order=fecha.desc)"
+    required: false
+    in: query
+    type: string
+  range:
+    name: Range
+    description: "Limiting and Pagination. Especifica el rango de resultados a devolver, usando índices. (ej.: Range: `eq.0-9` devuelve los primeros 10 resultados (del 0 al 9).)"
+    required: false
+    in: header
+    type: string
+  rangeUnit:
+    name: Range-Unit
+    description: "Limiting and Pagination. Unidad utilizada para especificar los rangos de paginación en el encabezado Range. El valor comúnmente utilizado es `items`, lo que indica que la paginación se basa en elementos individuales."
+    required: false
+    default: items
+    in: header
+    type: string
+  offset:
+    name: offset
+    description: "Limiting and Pagination. Limiting and Pagination. Número de resultados que se saltan antes de empezar a mostrar. Se usa con limit para paginar. (ej.: `eq.offset=10` empieza a mostrar desde el resultado número 11.)"
+    required: false
+    in: query
+    type: string
+  limit:
+    name: limit
+    description: "Limiting and Pagination. Limiting and Pagination. Cantidad máxima de resultados a mostrar. Se usa para paginar (ej.: `eq.limit=10` devuelve solo los primeros 10 resultados.)"
+    required: false
+    in: query
+    type: string
+  body.v_cntr_other_species:
+    name: v_cntr_other_species
+    description: v_cntr_other_species
+    required: false
+    in: body
+    schema:
+      $ref: '#/definitions/v_cntr_other_species'
+  rowFilter.v_cntr_other_species.other_species_id:
+    name: other_species_id
+    description: |-
+      Identificador único de other_species_id. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.5777` 
+      Puede consultar el listado de other_species_id en la siguiente url: https://des.iepnb.es/api/catalogo/v_other_species_id_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_group:
+    name: other_species_group
+    description: |-
+      Grupo taxonómico para especies que no encajan en las categorías principales, incluyendo grupos menos representados o específicos.
+       • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.B`
+      •  Ejemplo: Verificando igualdad exacta (nulo, verdadero, falso, desconocido)→  `is.null`
+       Puede consultar el listado de other_species_group en la siguiente url: https://des.iepnb.es/api/catalogo/v_other_species_group_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_code:
+    name: other_species_code
+    description: |-
+      Identificador único asignado a una especie dentro del grupo de especies no clasificadas en categorías taxonómicas principales. 
+       • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.A110` 
+      Puede consultar el listado de other_species_code en la siguiente url: https://des.iepnb.es/api/catalogo/v_other_species_code_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_name:
+    name: other_species_name
+    description: |
+      Nombre con el que se hace referencia al other_species_name, ya sea científico o común. Se utiliza para realizar consultas o filtros por nombre exacto. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.Bromus sterilis L.`
+      Puede consultar el listado de other_species_name en la siguiente url: https://des.iepnb.es/api/catalogo/v_other_species_id_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_sensitive:
+    name: other_species_sensitive
+    description: |-
+      Indica si la especie es sensible o vulnerable, requiriendo protección especial. Visualizado con los datos 1-true, 0-false o el campo null.
+       • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.1` 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_np:
+    name: other_species_np
+    description: |-
+      Indica si la especie no es prioritaria dentro del grupo other_species_group. Visualizado con los datos 1-true, 0-false o el campo null.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.1`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_size_min:
+    name: other_species_size_min
+    description: |-
+      Tamaño mínimo estimado de la población de la especie en el área evaluada. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.6364` 
+      Puede consultar el listado de other_species_size_min en la siguiente url: https://des.iepnb.es/api/catalogo/v_other_species_size_min_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_size_max:
+    name: other_species_size_max
+    description: |-
+      Tamaño maximo estimado de la población de la especie en el área evaluada. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.14` 
+      Puede consultar el listado de other_species_size_max en la siguiente url: https://des.iepnb.es/api/catalogo/v_other_species_size_max_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_unit:
+    name: other_species_unit
+    description: |-
+      Unidad de medida utilizada para expresar el tamaño de la población de la especie (ej. individuos, parejas, colonias). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.tufts`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_category:
+    name: other_species_category
+    description: |-
+      Categoría de conservación o tipo de especie según criterios ecológicos o normativos. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.V` 
+      Puede consultar el listado de other_species_category en la siguiente url: https://des.iepnb.es:443/api/catalogo/v_other_species_category_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_motivation:
+    name: other_species_motivation
+    description: |-
+      Justificación o razón por la cual la especie ha sido incluida en el inventario o área protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.B`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.site_code:
+    name: site_code
+    description: |-
+      Código único de un espacio protegido dentro de la Red Natura 2000, asignado por las autoridades ambientales. Su formato consiste en un código de país (por ejemplo, ES para España) seguido de una secuencia numérica (por ejemplo, ES0000001). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.ES0000001`
+      Puede consultar el listado de site_code en la siguiente url: https://des.iepnb.es:443/api/catalogo/v_site_code_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.year:
+    name: year
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.id_reporte:
+    name: id_reporte
+    description: |-
+      Identificador único del informe o registro asociado a datos de especies en el área protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.182`  
+      Puede consultar el listado de id_reporte en la siguiente url: https://iepnb.gob.es:443/api/catalogo/v_id_reporte
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_type:
+    name: other_species_type
+    description: |-
+      Tipo o clasificación general de la especie dentro del grupo de especies no principales (por ejemplo, líquenes, algas, etc.). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.C`
+      Puedes seleccionar de las siguientes: 
+      C
+      W
+      Np
+      R
+      Pd
+      p
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_id_type:
+    name: other_species_id_type
+    description: |- 
+      Tipo de identificador utilizado para la especie (por ejemplo, código taxonómico, ID interno, etc.). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→`eq.202`
+      Puedes seleccionar de las siguientes (los números): 
+      202-C
+      63-W
+      203-Np
+      62-R
+      204-Pd
+      201-p
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_other_species.other_species_id_unit:
+    name: other_species_id_unit
+    description: |-
+      Unidad asociada al identificador de la especie, utilizada para estandarizar la medición o cuantificación (por ejemplo, individuos, grupos, hectáreas). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta→ `eq.i`
+      Puede consultar el listado de other_species_id_unit en la siguiente url:
+       https://des.iepnb.es:443/api/catalogo/v_other_species_id_unit_api
+    required: false
+    in: query
+    type: string
+  body.v_cntr_habitat:
+    name: v_cntr_habitat
+    description: v_cntr_habitat
+    required: false
+    in: body
+    schema:
+      $ref: '#/definitions/v_cntr_habitat'
+  rowFilter.v_cntr_habitat.habitat_id:
+    name: habitat_id
+    description: |-
+      Identificador único del habitat_id.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.11463`
+      Puede consultar el listado de habitat_id en la siguiente url: https://iepnb.gob.es:443/api/catalogo/v_habitat_code"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_code:
+    name: habitat_code
+    description: |-
+      Código identificativo único asignado a cada tipo de hábitat según la clasificación oficial de la Directiva Hábitats de la Unión Europea. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta→ `eq.`
+      Puede consultar el listado de habitat_code en la siguiente url: https://iepnb.gob.es:443/api/catalogo/v_habitat_code"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_priority:
+    name: habitat_priority
+    description:  |-
+      Indica si un hábitat dentro del área protegida es prioritario según la Directiva Hábitats de la UE, requiriendo protección especial por su importancia y estado de conservación. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: para búsqueda exacta → `eq.true` 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_np:
+    name: habitat_np
+    description: |-
+      Indica si un hábitat es no prioritario dentro del área protegida, es decir, de interés comunitario pero sin la condición especial de prioridad. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      • Ejemplo: Verificando igualdad exacta (nulo, verdadero, falso, desconocido) → `is.true` 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_cover:
+    name: habitat_cover
+    description: |- 
+      Porcentaje o extensión del área cubierta por un hábitat específico dentro del espacio protegido.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: Filtrar por valores mayores → `gt.0.06000`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_caves:
+    name: habitat_caves
+    description: |-
+      Indica la presencia y características de cuevas relevantes para la conservación dentro del hábitat o área protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas → `ilike.29%`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_data_quality:
+    name: habitat_data_quality
+    description: |-
+      Nivel de calidad o fiabilidad de los datos relacionados con el hábitat en el área protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta → `eq.G` 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_representativity:
+    name: habitat_representativity
+    description: |-
+      Grado en que el hábitat representa las características típicas y naturales esperadas en la zona protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta → `eq.` 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_relative_surface:
+    name: habitat_relative_surface
+    description: |-
+      Proporción o porcentaje que representa la superficie del hábitat respecto al total del área protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering )
+      •  Ejemplo: para búsqueda exacta → `eq.C`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_conservation:
+    name: habitat_conservation
+    description: |-
+      Estado o nivel de conservación actual del hábitat dentro del área protegida. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • `eq.A` → para búsqueda exacta 
+      Puedes seleccionar de los siguientes:
+      A
+      B
+      C
+      •  Ejemplo: para búsqueda exacta → `eq.C`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_global:
+    name: habitat_global
+    description: |-
+     Evaluación general del estado y calidad del hábitat en el área protegida, considerando todos los factores relevantes.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Si es texto:
+      •  eq, ilike, in
+      •  Si es numérico:
+      •  eq, gt, lt, gte, lte
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.site_code:
+    name: site_code
+    description: |-
+      Código único de un espacio protegido dentro de la Red Natura 2000, asignado por las autoridades ambientales. Su formato consiste en un código de país (por ejemplo, ES para España) seguido de una secuencia numérica (por ejemplo, ES0000001). 
+        • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.ES0000001` 
+      • Puede consultar el listado de site_code en la siguiente url: https://des.iepnb.es/api/catalogo/v_site_code_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.habitat_cover_ha:
+    name: habitat_cover_ha
+    description: |-
+      Superficie total del hábitat cubierta dentro del área protegida, expresada en hectáreas. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.16.640`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.year:
+    name: year
+    description: "????????"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_habitat.id_reporte:
+    name: id_reporte
+    description: |-
+      Identificador único del reporte o informe asociado al hábitat o área protegida.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → eq. 
+    required: false
+    in: query
+    type: string
+  body.v_cntr_site:
+    name: v_cntr_site
+    description: v_cntr_site
+    required: false
+    in: body
+    schema:
+      $ref: '#/definitions/v_cntr_site'
+  rowFilter.v_cntr_site.site_code:
+    name: site_code
+    description: |-
+      Código único de un espacio protegido dentro de la Red Natura 2000, asignado por las autoridades ambientales. Su formato consiste en un código de país (por ejemplo, ES para España) seguido de una secuencia numérica (por ejemplo, ES0000001). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.ES0000001`
+      • Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas  → `ilike.ES%`
+      Puede consultar el listado de site_code en la siguiente url:
+      https://des.iepnb.es/api/catalogo/v_site_code_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_type:
+    name: site_type
+    description: |-
+      Codificación del tipo de figura de protección de la red natura puede ser 
+      A (ZEPA),  
+      B (LIC/ZEC) 
+      C (LIC/ZEC + ZEPA)
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.A`
+    
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_name:
+    name: site_name
+    description: |-
+      Nombre oficial del espacio protegido dentro de la Red Natura 2000. Este nombre identifica el área de forma descriptiva y suele acompañar al código del lugar.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.Ilas Cies`
+      Puede consultar el listado de site_name en la siguiente url:
+      https://des.iepnb.es/api/catalogo/v_site_code_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_spa_date:
+    name: site_spa_date
+    description: |-
+      Fecha en la que el área protegida fue oficialmente designada como Zona de Especial Protección para las Aves (ZEPA), estableciendo su reconocimiento legal y las medidas de conservación asociadas (AA-M-D). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Filtrar por valor mayores o iguales → `gte.1988-02-01`
+      Puede consultar el listado de site_spa_date en la siguiente url: https://des.iepnb.es/api/catalogo/v_site_spa_legal_ref_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_spa_legal_ref:
+    name: site_spa_legal_ref
+    description: |-
+      Referencia legal oficial del sitio de Protección Especial de Aves (SPA) según la normativa aplicable. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas → `ilike.* Decreto 37/2014, de 27 de marzo*`
+      Puede consultar el listado de site_spa_legal_ref en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_spa_legal_ref_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_sci_prop_date:
+    name: site_sci_prop_date
+    description: |-
+      Fecha en que el sitio fue propuesto como Lugar de Importancia Comunitaria (SCI) para su protección científica. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.1997-12-01` 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_sci_conf_date:
+    name: site_sci_conf_date
+    description: |-
+      Fecha en que el sitio fue confirmado oficialmente como Lugar de Importancia Comunitaria (SCI). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.2004-12-01`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_sac_date:
+    name: site_sac_date
+    description: |-
+      Fecha de designación oficial del sitio como Zona de Especial Conservación (SAC).
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.2004-12-01`
+      Puede consultar el listado de site_sac_date en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_sac_legal_ref_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_sac_legal_ref:
+    name: site_sac_legal_ref
+    description: |-
+      Referencia legal oficial de la designación del sitio como Zona de Especial Conservación (SAC). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas  → `ilike.* Decreto 57/2015, de 10 de septiembre*`
+      Puede consultar el listado de site_sac_legal_ref en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_sac_legal_ref_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_explanations:
+    name: site_explanations
+    description: |-
+      Información adicional o aclaraciones sobre el sitio protegido. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas → `ilike.*Parque Natural del Cadí-Moixeró*` 
+      Puede consultar el listado de site_explanations en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_explanations_api "
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_longitude:
+    name: site_longitude
+    description: |-
+      Coordenada geográfica de longitud del sitio protegido, en grados decimales.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: encontrar todos los valores menores o iguales → `lte.5`
+      Puede consultar el listado de site_longitude en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_longitude_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_latitude:
+    name: site_latitude
+    description: |-
+      Coordenada geográfica de latitud del sitio protegido, en grados decimales. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.41.567` 
+        Puede consultar el listado en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_longitude_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_area:
+    name: site_area
+    description: |-
+      Superficie total del sitio protegido, expresada en hectáreas. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Filtrar por valor mayores o iguales → `gte.990.35`
+      Puede consultar el listado de site_area en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_longitude_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_marine_area:
+    name: site_marine_area
+    description: |-
+      Superficie del área marina incluida dentro del sitio protegido, expresada en hectáreas. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: Filtrar por valor mayores o iguales → `gte.100.00`
+      Puede consultar el listado en la siguiente url: <br> https://des.iepnb.es/api/catalogo/v_site_marine_area_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_length:
+    name: site_length
+    description: |-
+      Longitud total del sitio protegido, generalmente en metros o kilómetros. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: Filtrar por valor mayores o iguales → `gte.44.15`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_characteristics:
+    name: site_characteristics
+    description: |-
+      Descripción de las principales características físicas, ecológicas o ambientales del sitio protegido.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas →`ilike.*Archipiélago cercano a la costa*`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_quality:
+    name: site_quality
+    description: |-
+      Evaluación general de la calidad ecológica o ambiental del sitio protegido. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: Para coincidencia parcial, sin distinguir mayúsculas  → `ilike.*anexo I de la Directiva 92/43/CEE*`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_designation:
+    name: site_designation
+    description: |-
+      Tipo o categoría oficial de protección asignada al sitio (por ejemplo, LIC, ZEC, ZEPA). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Verificando igualdad exacta (nulo, verdadero, falso, desconocido)→ is.null
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.doc_id:
+    name: doc_id
+    description: |-
+      Identificador único del documento relacionado con el sitio o la especie.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq. 5778` 
+      Puede consultar el listado de doc_id la siguiente url: 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.resp_id:
+    name: resp_id
+    description: |-
+      Identificador único de la entidad o persona responsable del reporte o documentación.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.200`  
+      Puede consultar el listado de resp_id con en la siguiente url: 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.mgmt_id:
+    name: mgmt_id
+    description: |-
+      Identificador único del plan o medida de gestión asociado al sitio protegido. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.46` 
+      Puede consultar el listado de mgmt_id con en la siguiente url: 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.map_id:
+    name: map_id
+    description: |-
+      Identificador único del mapa asociado al sitio o a su delimitación geográfica. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+      Puede consultar el listado de map_id en la siguiente url: 
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.date_creation:
+    name: date_creation
+    description: |-
+     Fecha en la que se creó el registro o documento correspondiente. 
+     • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+     •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.date_deletion:
+    name: date_deletion
+    description: |- 
+      Fecha en la que el registro o documento fue eliminado o marcado para eliminación • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.date_update:
+    name: date_update
+    description: |-
+      Fecha de la última actualización del registro o documento.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_asci_prop_date:
+    name: site_asci_prop_date
+    description: |-
+      Fecha en la que el sitio fue oficialmente propuesto como Área de Importancia para la Conservación (ASCI) dentro del marco de la Red Emerald, conforme a la Convención de Berna. Indica el inicio del proceso de reconocimiento del área como relevante para la conservación de la biodiversidad. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_asci_conf_cand_date:
+    name: site_asci_conf_cand_date
+    description: |-
+      Fecha en la que el sitio fue confirmado como candidato a Área de Importancia para la Conservación (ASCI) dentro de la Red Emerald. Representa un paso formal en el proceso de evaluación y aceptación del sitio bajo la Convención de Berna. 
+        • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_asci_conf_date:
+    name: site_asci_conf_date
+    description: |-
+      Fecha en la que el sitio fue oficialmente confirmado como Área de Importancia para la Conservación (ASCI) dentro de la Red Emerald, bajo los criterios de la Convención de Berna. Marca el reconocimiento formal del valor del sitio para la conservación de la biodiversidad.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_asci_desig_date:
+    name: site_asci_desig_date
+    description: |-
+      Fecha oficial en la que el sitio fue designado como Área de Importancia para la Conservación (ASCI) dentro de la Red Emerald, estableciendo su reconocimiento y protección según la Convención de Berna. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_asci_legal_ref:
+    name: site_asci_legal_ref
+    description: |-
+      Referencia legal oficial que acredita la designación del sitio como Área de Importancia para la Conservación (ASCI) en la Red Emerald bajo la Convención de Berna. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta →
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.year:
+    name: year
+    description: "????????"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_comp_date:
+    name: site_comp_date
+    description: |-
+      Fecha de finalización o cumplimiento de los requisitos para la protección o gestión oficial del sitio protegido (AA-M-D). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.1997-12-01`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.site_update_date:
+    name: site_update_date
+    description: |-
+      Fecha en la que se realizó la última actualización de los datos o la información del sitio protegido (AA-M-D). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.2021-02-01`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_site.id_reporte:
+    name: id_reporte
+    description: |-
+      Identificador único asignado al informe o reporte relacionado con el sitio.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.182` 
+      Puede consultar el listado de id_reporte con el nombre de su habitat en la siguiente url:
+    required: false
+    in: query
+    type: string
+  body.v_cntr_planes:
+    name: v_cntr_planes
+    description: v_cntr_planes
+    required: false
+    in: body
+    schema:
+      $ref: '#/definitions/v_cntr_planes'
+  rowFilter.v_cntr_planes.site_code:
+    name: site_code
+    description: |-
+      Código identificativo único asignado a un sitio protegido dentro de la Red Natura 2000. Este código sirve para referenciar y consultar información específica sobre el sitio, como planes de gestión, características, hábitats y especies asociadas. Código único de un espacio protegido dentro de la Red Natura 2000, asignado por las autoridades ambientales. Su formato consiste en un código de país (por ejemplo, ES para España) seguido de una secuencia numérica (por ejemplo, ES0000001).
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.ES0000001` 
+      Puedes consultar el listado de site_code en la siguiente url: https://des.iepnb.es/api/catalogo/v_site_code_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_planes.site_name:
+    name: site_name
+    description: |-
+      Nombre oficial del sitio protegido dentro de la Red Natura 2000. En una API PostgREST, los operadores permiten filtrar datos; estos son los que puedes usar para buscar:
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.Illas Cies` 
+      Puedes consultar el listado de site_name en la siguiente url: https://des.iepnb.es/api/catalogo/v_site_code_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_planes.mgmt_id:
+    name: mgmt_id
+    description: |-
+      Identificador único asignado al plan de gestión correspondiente al sitio protegido. Este identificador permite relacionar y acceder a la documentación y medidas específicas diseñadas para la conservación, manejo y seguimiento del área dentro de la Red Natura 2000. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.835`
+      Puede consultar el listado de mgmt_id en la siguiente url:
+      https://des.iepnb.es/api/catalogo/v_mgmt_id_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_planes.mgmt_plan_name:
+    name: mgmt_plan_name
+    description: |-
+      Nombre oficial del plan de gestión asociado al sitio protegido. Este plan incluye las estrategias, medidas y acciones propuestas para la conservación y manejo sostenible del área dentro de la Red Natura 2000. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+       • Ejemplo: para búsqueda exacta → `eq. Plan de Gestión Doñana`
+       Puede consultar el listado de mgmt_plan_name en la siguiente url: https://des.iepnb.es/api/catalogo/v_mgmt_plan_name_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_planes.mgmt_plan_url:
+    name: mgmt_plan_url
+    description: |-
+      URL o enlace web donde se puede acceder al documento completo del plan de gestión del sitio protegido. Proporciona acceso directo a la información oficial sobre las medidas y estrategias de conservación aplicadas en el área.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.*www.jcyl.es/Natura2000*` 
+      Puede consultar el listado de mgmt_plan_url en la siguiente url: https://des.iepnb.es/api/catalogo/v_mgmt_plan_url_api"
+    required: false
+    in: query
+    type: string
+  body.v_cntr_species:
+    name: v_cntr_species
+    description: v_cntr_species
+    required: false
+    in: body
+    schema:
+      $ref: '#/definitions/v_cntr_species'
+  rowFilter.v_cntr_species.species_id:
+    name: species_id
+    description: |-
+      Identificador único del species_id , usar 'eq.' para buscar por species_id exacto.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.1719`
+      Puede consultar el listadode species_id en la siguiente url: https://des.iepnb.es/api/catalogo/v_species_id_api
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_group:
+    name: species_group
+    description: "???????"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_code:
+    name: species_code
+    description: |-
+      Identificador único asignado a una especie dentro del grupo de especies no clasificadas en categorías taxonómicas principales. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.1787`  
+      Puede consultar el listado de species_code en la siguiente url: https://des.iepnb.es/api/catalogo/v_species_code_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_name:
+    name: species_name
+    description: |-
+      El nombre que se usa para identificar a la especie.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.Erodium paularense` 
+      Puede consultar el listado en la siguiente url: https://des.iepnb.es/api/catalogo/v_species_id_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_sensitive:
+    name: species_sensitive
+    description: |-
+      Indica si la especie es sensible o vulnerable, requiriendo protección especial. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Verificando igualdad exacta (nulo, verdadero, falso, desconocido) → `is.null`  
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_np:
+    name: species_np
+    description: |-
+      indica si la especie no es prioritaria dentro del grupo species_group. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: Verificando igualdad exacta (nulo, verdadero, falso, desconocido) → `is.null`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_type:
+    name: species_type
+    description: "??????"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_size_min:
+    name: species_size_min
+    description: |-
+      Tamaño mínimo estimado de la población de la especie en el área evaluada. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)  
+      • Ejemplo: Filtrar por mayor o igual → `gte.1100` 
+      Puede consultar el listado de species_size_min en la siguiente url: https://des.iepnb.es/api/catalogo/v_species_size_min_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_size_max:
+    name: species_size_max
+    description: |-
+      Tamaño máximo estimado de la población de la especie en el área evaluada.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)  
+      • Ejemplo: para búsqueda exacta → `eq.351`  
+      Puede consultar el listado de species_size_max en la siguiente url: https://des.iepnb.es/api/catalogo/v_species_size_min_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_unit:
+    name: species_unit
+    description: |-
+      Unidad de medida utilizada para expresar el tamaño de la población de la especie (ej. individuos, parejas, colonias). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)  
+      • Ejemplo: para búsqueda exacta → `eq. grids1x1`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_category:
+    name: species_category
+    description: |-
+      Categoría o clasificación de la especie según criterios ecológicos, taxonómicos o normativos. Puede incluir categorías como especies protegidas, prioritarias, sensibles o especies de interés comunitario dentro del ámbito de la Red Natura 2000. Este parámetro permite filtrar o consultar información específica sobre grupos concretos de especies en el sitio protegido. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)  
+      • Ejemplo: para búsqueda exacta → `eq.P`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_data_quality:
+    name: species_data_quality
+    description: |-
+      Nivel de calidad o fiabilidad de los datos disponibles sobre la especie en el sitio protegido, basado en criterios científicos y de muestreo. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)  
+      •  Ejemplo: para búsqueda exacta → `eq.M`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_population:
+    name: species_population
+    description: |-
+      Estimación o conteo de la población de la especie en el área protegida, expresada en número de individuos, parejas u otra unidad relevante. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)  
+      •  Ejemplo: para búsqueda exacta → `eq.C`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_conservation:
+    name: species_conservation
+    description: |-
+      Estado o nivel de conservación actual de la especie en el sitio protegido, incluyendo posibles amenazas y medidas de protección aplicadas. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: buscar múltiples coincidencias → in.(C,B)
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_isolation:
+    name: species_isolation
+    description: |-
+      Grado de aislamiento geográfico o ecológico de la población de la especie dentro del área protegida, que puede influir en su viabilidad y conservación.
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      •  Ejemplo: para búsqueda exacta → `eq.C`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_global:
+    name: species_global
+    description: |- 
+     Evaluación general del estado de la especie en el sitio protegido, considerando factores como su abundancia, distribución y amenazas. 
+     • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+     • Ejemplo: para búsqueda exacta → `eq.C`
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.site_code:
+    name: site_code
+    description: |-
+      Código único de un espacio protegido dentro de la Red Natura 2000, asignado por las autoridades ambientales. Su formato consiste en un código de país (por ejemplo, ES para España) seguido de una secuencia numérica (por ejemplo, ES0000001). 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.ES4160109` 
+      Puede consultar el listado site_code en la siguiente url: https://des.iepnb.es/api/catalogo/v_site_code_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.year:
+    name: year
+    description: "??????"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.id_reporte:
+    name: id_reporte
+    description: |-
+      Identificador único del informe o registro asociado a datos de hábitats, especies o sitios protegidos. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.182` 
+      Puede consultar el listado de id_reporte en la siguiente url: https://iepnb.gob.es:443/api/catalogo/v_id_reporte"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_id_type:
+    name: species_id_type
+    description: |-
+      Tipo de identificador utilizado para la especie, como código taxonómico, código interno o número de catálogo. 
+      • Utilizar operadores de Postgrest: `eq.` , `like.` , `gt.` , ect...(ver todos lo operadores en https://postgrest.org/en/v12/references/api/tables_views.html#horizontal-filtering)
+      • Ejemplo: para búsqueda exacta → `eq.204` →  
+      Puede consultar el listado de species_id_type en la siguiente url: https://des.iepnb.es/api/catalogo/v_species_id_type_api"
+    required: false
+    in: query
+    type: string
+  rowFilter.v_cntr_species.species_id_unit:
+    name: species_id_unit
+    description: "??????"
+    required: false
+    in: query
+    type: string
+    
+externalDocs:
+  description: PostgREST Documentation
+  url: https://postgrest.org/en/v12/references/api.html
